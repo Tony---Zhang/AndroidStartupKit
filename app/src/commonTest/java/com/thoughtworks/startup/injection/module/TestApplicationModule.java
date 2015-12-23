@@ -1,4 +1,4 @@
-package com.thoughtworks.startup.test.common.injection.module;
+package com.thoughtworks.startup.injection.module;
 
 import android.app.Application;
 import android.content.Context;
@@ -20,11 +20,11 @@ import static org.mockito.Mockito.mock;
  * This allows injecting mocks if necessary.
  */
 @Module
-public class ApplicationTestModule {
+public class TestApplicationModule {
 
     private final Application mApplication;
 
-    public ApplicationTestModule(Application application) {
+    public TestApplicationModule(Application application) {
         mApplication = application;
     }
 

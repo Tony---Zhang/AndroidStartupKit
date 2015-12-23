@@ -1,16 +1,17 @@
-package com.thoughtworks.startup.test.common.rules;
+package com.thoughtworks.startup.rules;
 
 import android.content.Context;
+
+import com.thoughtworks.startup.StartupApplication;
+import com.thoughtworks.startup.data.DataManager;
+import com.thoughtworks.startup.injection.component.DaggerTestComponent;
+import com.thoughtworks.startup.injection.component.TestComponent;
+import com.thoughtworks.startup.injection.module.TestApplicationModule;
+import com.thoughtworks.startup.injection.module.TestAndroidServicesModule;
 
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
-
-import com.thoughtworks.startup.StartupApplication;
-import com.thoughtworks.startup.data.DataManager;
-import com.thoughtworks.startup.test.common.injection.component.DaggerTestComponent;
-import com.thoughtworks.startup.test.common.injection.component.TestComponent;
-import com.thoughtworks.startup.test.common.injection.module.ApplicationTestModule;
 
 /**
  * Test rule that creates and sets a Dagger TestComponent into the application overriding the
@@ -28,7 +29,8 @@ public class TestComponentRule implements TestRule {
         mContext = context;
         StartupApplication application = StartupApplication.get(context);
         mTestComponent = DaggerTestComponent.builder()
-                .applicationTestModule(new ApplicationTestModule(application))
+                .testApplicationModule(new TestApplicationModule(application))
+                .testAndroidServicesModule(new TestAndroidServicesModule())
                 .build();
     }
 

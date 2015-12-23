@@ -2,32 +2,26 @@ package com.thoughtworks.startup;
 
 import android.database.Cursor;
 
+import com.thoughtworks.startup.data.local.DatabaseHelper;
+import com.thoughtworks.startup.data.local.Db;
+import com.thoughtworks.startup.data.local.DbOpenHelper;
+import com.thoughtworks.startup.data.model.Ribot;
+
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.RobolectricGradleTestRunner;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.annotation.Config;
 
 import java.util.Arrays;
 import java.util.List;
 
 import rx.observers.TestSubscriber;
-import com.thoughtworks.startup.data.local.DatabaseHelper;
-import com.thoughtworks.startup.data.local.Db;
-import com.thoughtworks.startup.data.local.DbOpenHelper;
-import com.thoughtworks.startup.data.model.Ribot;
-import com.thoughtworks.startup.test.common.TestDataFactory;
-import com.thoughtworks.startup.util.DefaultConfig;
 
 import static junit.framework.Assert.assertEquals;
 
 /**
  * Unit tests integration with a SQLite Database using Robolectric
  */
-@RunWith(RobolectricGradleTestRunner.class)
-@Config(constants = BuildConfig.class, sdk = DefaultConfig.EMULATE_SDK)
-public class DatabaseHelperTest {
+public class DatabaseHelperTest extends ApplicationTestCase {
 
     private final DatabaseHelper mDatabaseHelper =
             new DatabaseHelper(new DbOpenHelper(RuntimeEnvironment.application));

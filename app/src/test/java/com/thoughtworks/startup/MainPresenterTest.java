@@ -14,7 +14,6 @@ import java.util.List;
 import rx.Observable;
 import com.thoughtworks.startup.data.DataManager;
 import com.thoughtworks.startup.data.model.Ribot;
-import com.thoughtworks.startup.test.common.TestDataFactory;
 import com.thoughtworks.startup.ui.main.MainMvpView;
 import com.thoughtworks.startup.ui.main.MainPresenter;
 import com.thoughtworks.startup.util.RxSchedulersOverrideRule;

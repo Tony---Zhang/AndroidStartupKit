@@ -1,4 +1,4 @@
-package com.thoughtworks.startup.test.common;
+package com.thoughtworks.startup;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -16,7 +16,6 @@ import com.thoughtworks.startup.data.local.DatabaseHelper;
 import com.thoughtworks.startup.data.local.PreferencesHelper;
 import com.thoughtworks.startup.data.model.Ribot;
 import com.thoughtworks.startup.data.remote.RibotsService;
-import com.thoughtworks.startup.test.common.TestDataFactory;
 import com.thoughtworks.startup.util.EventPosterHelper;
 
 import static org.mockito.Matchers.anyListOf;

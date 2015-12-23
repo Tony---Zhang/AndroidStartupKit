@@ -28,7 +28,7 @@
         <!-- General Code Style -->
 
         <module name="LineLength">
-            <property name="max" value="100"/>
+            <property name="max" value="160"/>
             <property name="ignorePattern" value="^package.*|^import.*|a href|href|http://|https://|ftp://"/>
         </module>
 
@@ -57,8 +57,6 @@
         <module name="NoFinalizer"/>
 
         <module name="ArrayTypeStyle"/>
-
-        <module name="ModifierOrder"/>
 
         <module name="Indentation">
             <property name="basicOffset" value="4"/>

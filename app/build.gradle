@@ -71,6 +71,17 @@ android {
         }
     }
 
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/services/javax.annotation.processing.Processor'
+    }
+
     sourceSets {
         def commonTestDir = 'src/commonTest/java'
         test {
@@ -101,7 +112,7 @@ dependencies {
     final DEXMAKER_VERSION = '1.4'
     final HAMCREST_VERSION = '1.3'
     final ESPRESSO_VERSION = '2.2.1'
-    final RUNNER_VERSION = '0.4'
+    final RUNNER_VERSION = '0.4.1'
 
     def daggerCompiler = "com.google.dagger:dagger-compiler:$DAGGER_VERSION"
     def jUnit = "junit:junit:4.12"

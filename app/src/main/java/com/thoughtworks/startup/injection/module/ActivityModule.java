@@ -8,7 +8,7 @@ import com.thoughtworks.startup.injection.ActivityContext;
 import dagger.Module;
 import dagger.Provides;
 
-@Module
+@Module(includes = {AndroidServicesModule.class})
 public class ActivityModule {
 
     private Activity mActivity;
