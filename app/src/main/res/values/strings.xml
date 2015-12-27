@@ -17,6 +17,8 @@
     <string name="error.msg.field_required">This field is required</string>
     <string name="error.msg.empty_ribots">There aren\'t any ribots</string>
     <string name="error.msg.loading_ribots">There was a problem loading the ribots</string>
+    <string name="error.msg.empty_github_user">There aren\'t any GitHub users</string>
+    <string name="error.msg.loading_github_user">There was a problem loading the GitHub users</string>
 
     <string name="dialog_action_ok">OK</string>
     <string name="dialog_action_cancel">Cancel</string>

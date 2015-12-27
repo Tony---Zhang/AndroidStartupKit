@@ -9,6 +9,8 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+
+import com.thoughtworks.startup.data.remote.GitHubService;
 import com.thoughtworks.startup.data.remote.RibotsService;
 import com.thoughtworks.startup.data.remote.SignInService;
 import com.thoughtworks.startup.injection.ApplicationContext;
@@ -53,4 +55,9 @@ public class ApplicationModule {
         return SignInService.Creator.newSignInService();
     }
 
+    @Provides
+    @Singleton
+    GitHubService provideGitHubService() {
+        return GitHubService.Creator.newGitHubService();
+    }
 }

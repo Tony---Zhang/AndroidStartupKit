@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.squareup.otto.Bus;
 import com.thoughtworks.startup.data.DataManager;
+import com.thoughtworks.startup.data.remote.GitHubService;
 import com.thoughtworks.startup.data.remote.RibotsService;
 import com.thoughtworks.startup.data.remote.SignInService;
 import com.thoughtworks.startup.injection.ApplicationContext;
@@ -66,6 +67,12 @@ public class TestApplicationModule {
     @Singleton
     SignInService provideSignInService() {
         return mock(SignInService.class);
+    }
+
+    @Provides
+    @Singleton
+    GitHubService provideGitHubService() {
+        return mock(GitHubService.class);
     }
 
 }

@@ -12,6 +12,7 @@ import com.thoughtworks.startup.data.DataManager;
 import com.thoughtworks.startup.data.SyncService;
 import com.thoughtworks.startup.data.local.DatabaseHelper;
 import com.thoughtworks.startup.data.local.PreferencesHelper;
+import com.thoughtworks.startup.data.remote.GitHubService;
 import com.thoughtworks.startup.data.remote.RibotsService;
 import com.thoughtworks.startup.data.remote.SignInService;
 import com.thoughtworks.startup.injection.ApplicationContext;
@@ -28,6 +29,7 @@ public interface ApplicationComponent {
     Application application();
     RibotsService ribotsService();
     SignInService signInService();
+    GitHubService gitHubService();
     PreferencesHelper preferencesHelper();
     DatabaseHelper databaseHelper();
     DataManager dataManager();

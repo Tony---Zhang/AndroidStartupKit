@@ -1,6 +1,5 @@
 package com.thoughtworks.startup.data.remote;
 
-import com.thoughtworks.startup.data.ServerConfig;
 import com.thoughtworks.startup.data.model.SignInResponse;
 
 import retrofit.GsonConverterFactory;
@@ -13,17 +12,19 @@ import rx.Observable;
 
 public interface SignInService {
 
+    String ENDPOINT = "http://106.187.43.111:3000";
+
     int SUCCESS_CODE = 0;
 
     @FormUrlEncoded
-    @POST(ServerConfig.SIGNIN)
+    @POST("/login")
     Observable<SignInResponse> signIn(@Field("email") String email, @Field("password") String password);
 
     class Creator {
 
         public static SignInService newSignInService() {
             Retrofit retrofit = new Retrofit.Builder()
-                    .baseUrl(ServerConfig.SERVER)
+                    .baseUrl(ENDPOINT)
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .build();
