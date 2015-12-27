@@ -1,4 +1,9 @@
-package com.thoughtworks.startup;
+package com.thoughtworks.startup.ui.main;
+
+import com.thoughtworks.startup.TestDataFactory;
+import com.thoughtworks.startup.data.DataManager;
+import com.thoughtworks.startup.data.model.Ribot;
+import com.thoughtworks.startup.util.RxSchedulersOverrideRule;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,11 +17,6 @@ import java.util.Collections;
 import java.util.List;
 
 import rx.Observable;
-import com.thoughtworks.startup.data.DataManager;
-import com.thoughtworks.startup.data.model.Ribot;
-import com.thoughtworks.startup.ui.main.MainMvpView;
-import com.thoughtworks.startup.ui.main.MainPresenter;
-import com.thoughtworks.startup.util.RxSchedulersOverrideRule;
 
 import static org.mockito.Matchers.anyListOf;
 import static org.mockito.Mockito.doReturn;
