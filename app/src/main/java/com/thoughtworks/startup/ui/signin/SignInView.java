@@ -9,4 +9,10 @@ public interface SignInView extends MvpView {
     void showSignInFailed();
 
     void showSignInEmailInvalid();
+
+    void showEmailIsEmpty();
+
+    void showPasswordIsEmpty();
+
+    void showProgress(boolean show);
 }

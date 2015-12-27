@@ -6,6 +6,7 @@ import android.content.Context;
 import com.squareup.otto.Bus;
 import com.thoughtworks.startup.data.DataManager;
 import com.thoughtworks.startup.data.remote.RibotsService;
+import com.thoughtworks.startup.data.remote.SignInService;
 import com.thoughtworks.startup.injection.ApplicationContext;
 
 import javax.inject.Singleton;
@@ -45,7 +46,9 @@ public class TestApplicationModule {
         return new Bus();
     }
 
-    /************* MOCKS *************/
+    /*************
+     * MOCKS
+     *************/
 
     @Provides
     @Singleton
@@ -57,6 +60,12 @@ public class TestApplicationModule {
     @Singleton
     RibotsService provideRibotsService() {
         return mock(RibotsService.class);
+    }
+
+    @Provides
+    @Singleton
+    SignInService provideSignInService() {
+        return mock(SignInService.class);
     }
 
 }

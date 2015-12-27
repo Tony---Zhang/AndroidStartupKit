@@ -70,7 +70,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void showError() {
-        DialogFactory.createGenericErrorDialog(this, getString(R.string.error_loading_ribots))
+        DialogFactory.createGenericErrorDialog(this, getString(R.string.error_msg_loading_ribots))
                 .show();
     }
 
@@ -78,7 +78,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
     public void showRibotsEmpty() {
         mRibotsAdapter.setRibots(Collections.<Ribot>emptyList());
         mRibotsAdapter.notifyDataSetChanged();
-        Toast.makeText(this, R.string.empty_ribots, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, R.string.error_msg_empty_ribots, Toast.LENGTH_LONG).show();
     }
 
 }
