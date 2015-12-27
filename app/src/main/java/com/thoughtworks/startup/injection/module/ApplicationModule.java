@@ -10,6 +10,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import com.thoughtworks.startup.data.remote.RibotsService;
+import com.thoughtworks.startup.data.remote.SignInService;
 import com.thoughtworks.startup.injection.ApplicationContext;
 
 /**
@@ -44,6 +45,12 @@ public class ApplicationModule {
     @Singleton
     RibotsService provideRibotsService() {
         return RibotsService.Creator.newRibotsService();
+    }
+
+    @Provides
+    @Singleton
+    SignInService provideSignInService() {
+        return SignInService.Creator.newSignInService();
     }
 
 }

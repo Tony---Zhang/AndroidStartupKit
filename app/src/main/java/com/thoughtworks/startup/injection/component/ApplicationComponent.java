@@ -13,6 +13,7 @@ import com.thoughtworks.startup.data.SyncService;
 import com.thoughtworks.startup.data.local.DatabaseHelper;
 import com.thoughtworks.startup.data.local.PreferencesHelper;
 import com.thoughtworks.startup.data.remote.RibotsService;
+import com.thoughtworks.startup.data.remote.SignInService;
 import com.thoughtworks.startup.injection.ApplicationContext;
 import com.thoughtworks.startup.injection.module.ApplicationModule;
 
@@ -26,6 +27,7 @@ public interface ApplicationComponent {
     Context context();
     Application application();
     RibotsService ribotsService();
+    SignInService signInService();
     PreferencesHelper preferencesHelper();
     DatabaseHelper databaseHelper();
     DataManager dataManager();
