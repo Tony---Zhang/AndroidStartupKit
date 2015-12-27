@@ -3,8 +3,10 @@ package com.thoughtworks.startup.ui.signin;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -16,6 +18,7 @@ import android.widget.Toast;
 
 import com.thoughtworks.startup.R;
 import com.thoughtworks.startup.ui.base.BaseActivity;
+import com.thoughtworks.startup.ui.github.GitHubListActivity;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -70,6 +73,9 @@ public class SignInActivity extends BaseActivity implements SignInView {
     @Override
     public void showSignInSuccess() {
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
+
+        Intent intent = new Intent(SignInActivity.this, GitHubListActivity.class);
+        startActivity(intent);
     }
 
     @Override

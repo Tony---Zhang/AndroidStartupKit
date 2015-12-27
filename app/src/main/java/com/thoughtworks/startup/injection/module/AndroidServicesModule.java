@@ -3,6 +3,7 @@ package com.thoughtworks.startup.injection.module;
 import android.accounts.AccountManager;
 import android.app.ActivityManager;
 import android.app.AlarmManager;
+import android.app.SearchManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -114,5 +115,11 @@ public class AndroidServicesModule {
     @Singleton
     AccountManager provideAccountManager(Context context) {
         return AccountManager.get(context);
+    }
+
+    @Provides
+    @Singleton
+    SearchManager provideSearchManager(Context context) {
+        return (SearchManager) context.getSystemService(Context.SEARCH_SERVICE);
     }
 }
