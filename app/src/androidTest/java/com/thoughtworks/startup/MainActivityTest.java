@@ -7,8 +7,7 @@ import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.thoughtworks.startup.data.model.Ribot;
-import com.thoughtworks.startup.common.TestDataFactory;
-import com.thoughtworks.startup.common.rules.TestComponentRule;
+import com.thoughtworks.startup.rules.TestComponentRule;
 import com.thoughtworks.startup.ui.main.MainActivity;
 
 import org.junit.Rule;
