@@ -159,8 +159,6 @@ public class SignInActivity extends BaseActivity implements SignInView {
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(SignInActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-
-        mEmailView.setThreshold(2);
         mEmailView.setAdapter(adapter);
     }
 }

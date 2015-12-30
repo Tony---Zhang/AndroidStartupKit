@@ -21,7 +21,6 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="10dp"
-            android:background="@android:color/holo_blue_dark"
             android:contentDescription="@id/user_avatar" />
 
         <TextView

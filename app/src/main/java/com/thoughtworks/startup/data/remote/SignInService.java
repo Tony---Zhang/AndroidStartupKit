@@ -12,7 +12,7 @@ import rx.Observable;
 
 public interface SignInService {
 
-    String ENDPOINT = "http://106.187.43.111:3000";
+    String ENDPOINT = "http://54.169.112.42:3000"; // 106.187.43.111
 
     int SUCCESS_CODE = 0;
 
