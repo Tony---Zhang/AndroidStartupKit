@@ -16,6 +16,14 @@
 #   public *;
 #}
 
+-dontwarn **
+
+-keepattributes SourceFile,LineNumberTable,Signature,Exceptions
+
+#Keep Android Support rules
+-keep class android.support.** { *; }
+-keep interface android.support.** { *; }
+
 # ButterKnife rules
 -keep class butterknife.** { *; }
 -dontwarn butterknife.internal.**
@@ -32,8 +40,6 @@
 # Retrofit rules
 -dontwarn retrofit.**
 -keep class retrofit.** { *; }
--keepattributes Signature
--keepattributes Exceptions
 
 # OkHttp rules
 -dontwarn okio.**
@@ -62,7 +68,7 @@
 # TODO change to match your package model
 # Keep non static or private fields of models so Gson can find their names
 -keepclassmembers class com.thoughtworks.startup.data.model.** {
-    !static !private <fields>;
+    *;
 }
 # TODO change to match your Retrofit services (only if using inner models withing the service)
 # Some models used by gson are inner classes inside the retrofit service
@@ -73,4 +79,3 @@
 # Produces useful obfuscated stack traces
 # http://proguard.sourceforge.net/manual/examples.html#stacktrace
 -renamesourcefileattribute SourceFile
--keepattributes SourceFile,LineNumberTable
