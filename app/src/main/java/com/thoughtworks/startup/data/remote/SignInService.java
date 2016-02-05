@@ -11,8 +11,8 @@ import retrofit.http.POST;
 import rx.Observable;
 
 public interface SignInService {
-
-    String ENDPOINT = "http://54.169.112.42:3000"; // 106.187.43.111
+    
+    String ENDPOINT = "http://10.29.2.74:3000"; // 106.187.43.111
 
     int SUCCESS_CODE = 0;
 
