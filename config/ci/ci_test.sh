@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 basedir=`dirname $0`
-cd $basedir/..
+cd $basedir/../../
 
 ./gradlew clean  && \
 ./gradlew check
