@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId 'com.thoughtworks.startup'
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 23
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
         versionCode 1000

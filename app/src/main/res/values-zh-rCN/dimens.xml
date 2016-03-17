@@ -1,0 +1,17 @@
+<resources>
+
+    <dimen name="text_size_display4">112sp</dimen>
+    <dimen name="text_size_display3">56sp</dimen>
+    <dimen name="text_size_display2">45sp</dimen>
+    <dimen name="text_size_display1">34sp</dimen>
+    <dimen name="text_size_headline">24sp</dimen>
+    <dimen name="text_size_title">21sp</dimen>
+    <dimen name="text_size_subhead">17sp</dimen>
+    <dimen name="text_size_body_large">17sp</dimen>
+    <dimen name="text_size_body_small">13sp</dimen>
+    <dimen name="text_size_body1">15sp</dimen>
+    <dimen name="text_size_body2">15sp</dimen>
+    <dimen name="text_size_caption">13sp</dimen>
+    <dimen name="text_size_button">15sp</dimen>
+
+</resources>

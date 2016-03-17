@@ -6,4 +6,71 @@
         <item name="colorAccent">@color/accent</item>
     </style>
 
+    <!-- Project-->
+    <style name="TextTypography" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fontFamily">@string/font_fontFamily_regular</item>
+    </style>
+
+    <style name="TextTypography.Display4" parent="TextAppearance.AppCompat.Display4">
+        <item name="android:textSize">@dimen/text_size_display4</item>
+        <item name="android:fontFamily">@string/font_fontFamily_light</item>
+    </style>
+
+    <style name="TextTypography.Display3" parent="TextAppearance.AppCompat.Display3">
+        <item name="android:textSize">@dimen/text_size_display3</item>
+    </style>
+
+    <style name="TextTypography.Display2" parent="TextAppearance.AppCompat.Display2">
+        <item name="android:textSize">@dimen/text_size_display2</item>
+    </style>
+
+    <style name="TextTypography.Display1" parent="TextAppearance.AppCompat.Display1">
+        <item name="android:textSize">@dimen/text_size_display1</item>
+    </style>
+
+    <style name="TextTypography.Headline" parent="TextAppearance.AppCompat.Headline">
+        <item name="android:textSize">@dimen/text_size_headline</item>
+    </style>
+
+    <style name="TextTypography.Title" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textStyle">@integer/font_textStyle_medium</item>
+        <item name="android:fontFamily">@string/font_fontFamily_medium</item>
+        <item name="android:textSize">@dimen/text_size_title</item>
+    </style>
+
+    <style name="TextTypography.Subhead" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textSize">@dimen/text_size_subhead</item>
+    </style>
+
+    <style name="TextTypography.Body.Large" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/text_size_body_large</item>
+    </style>
+
+    <style name="TextTypography.Body.Small" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/text_size_body_small</item>
+    </style>
+
+    <style name="TextTypography.Body1" parent="TextAppearance.AppCompat.Body1">
+        <item name="android:textSize">@dimen/text_size_body1</item>
+    </style>
+
+    <style name="TextTypography.Body2" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:textStyle">@integer/font_textStyle_medium</item>
+        <item name="android:fontFamily">@string/font_fontFamily_medium</item>
+        <item name="android:textSize">@dimen/text_size_body2</item>
+    </style>
+
+    <style name="TextTypography.Caption" parent="TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">@dimen/text_size_caption</item>
+    </style>
+
+    <style name="TextTypography.Button" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textStyle">@integer/font_textStyle_medium</item>
+        <item name="android:fontFamily">@string/font_fontFamily_medium</item>
+        <item name="android:textSize">@dimen/text_size_button</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
 </resources>

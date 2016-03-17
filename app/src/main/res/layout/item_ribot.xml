@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="6dp"
-    android:layout_marginLeft="12dp"
-    android:layout_marginRight="12dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
     android:layout_marginTop="6dp"
     card_view:cardCornerRadius="2dp">
 
@@ -20,15 +20,15 @@
             android:id="@+id/view_hex_color"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginRight="10dp"
+            android:layout_marginEnd="10dp"
             android:background="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/text_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/view_hex_color"
-            android:textSize="@dimen/text_body"
+            android:layout_toEndOf="@id/view_hex_color"
+            android:textSize="@dimen/text_size_body_large"
             tools:text="Antony Ribot" />
 
         <TextView
@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/text_name"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@id/view_hex_color"
-            android:textSize="@dimen/text_small_body"
+            android:layout_toEndOf="@id/view_hex_color"
+            android:textSize="@dimen/text_size_body1"
             tools:text="developer" />
 
     </RelativeLayout>
