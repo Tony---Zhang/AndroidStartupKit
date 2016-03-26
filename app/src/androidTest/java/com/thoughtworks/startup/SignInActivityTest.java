@@ -31,7 +31,7 @@ public class SignInActivityTest {
     public ActivityTestRule<SignInActivity> activityTestRule = new ActivityTestRule<>(SignInActivity.class);
 
     @Test
-    public void should_signin_successful_with_valid_credential() throws Exception {
+    public void shouldSigninSuccessfulWithValidCredential() throws Exception {
         String userName = "tw@tw.com";
         String password = "password";
         onView(withId(R.id.email)).perform(clearText()).perform(typeText(userName));
@@ -43,7 +43,7 @@ public class SignInActivityTest {
     }
 
     @Test
-    public void should_signin_failed_with_invalid_credential() throws Exception {
+    public void shouldSigninFailedWithInvalidCredential() throws Exception {
         String userName = "tw@gmail.com";
         String password = "password";
         onView(withId(R.id.email)).perform(clearText()).perform(typeText(userName));
@@ -57,7 +57,7 @@ public class SignInActivityTest {
     }
 
     @Test
-    public void should_show_require_email_without_email() throws Exception {
+    public void shouldShowRequireEmailWithoutEmail() throws Exception {
         String password = "password";
         onView(withId(R.id.password)).perform(clearText()).perform(typeText(password));
         closeSoftKeyboard();
@@ -68,7 +68,7 @@ public class SignInActivityTest {
     }
 
     @Test
-    public void should_show_require_password_without_password() throws Exception {
+    public void shouldShowRequirePasswordWithoutPassword() throws Exception {
         String userName = "tw@tw.com";
         onView(withId(R.id.email)).perform(clearText()).perform(typeText(userName));
         onView(withText(userName)).perform(click());
@@ -80,7 +80,7 @@ public class SignInActivityTest {
     }
 
     @Test
-    public void should_show_auto_suggestion_list_when_input_more_than_two_words_in_email() throws Exception {
+    public void shouldShowAutoSuggestionListWhenInputMoreThanTwoWordsInEmail() throws Exception {
         String userName = "tw";
 
         onView(withId(R.id.email)).perform(clearText()).perform(typeText(userName));
