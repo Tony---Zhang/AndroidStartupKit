@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AndroidBoilerPlate</string>
+    <string name="app_name">Auto Test</string>
 
     <!-- Title -->
     <string name="title_activity_signin">Sign in</string>
