@@ -19,6 +19,10 @@ Libraries and tools included:
 - [Mockito](http://mockito.org/)
 - [Checkstyle](http://checkstyle.sourceforge.net/), [PMD](https://pmd.github.io/) and [Findbugs](http://findbugs.sourceforge.net/) for code analysis
 
+## Demo required
+
+[Mock server](https://github.com/Tony---Zhang/AndroidStartupServer)
+
 ## Requirements
 
 - [Android SDK](http://developer.android.com/sdk/index.html).
