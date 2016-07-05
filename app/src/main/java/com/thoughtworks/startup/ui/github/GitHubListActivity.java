@@ -19,12 +19,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class GitHubListActivity extends BaseActivity implements GitHubView {
 
-    @Bind(R.id.github_recycle_view)
+    @BindView(R.id.github_recycle_view)
     RecyclerView mGitHubRecycleView;
 
     @Inject

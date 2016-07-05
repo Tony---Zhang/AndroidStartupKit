@@ -15,7 +15,7 @@ import com.thoughtworks.startup.data.model.GitHubUser;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class GitHubAdapter extends RecyclerView.Adapter<GitHubAdapter.GitHubUserViewHolder> {
@@ -54,9 +54,9 @@ public class GitHubAdapter extends RecyclerView.Adapter<GitHubAdapter.GitHubUser
 
     class GitHubUserViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.user_avatar) ImageView userAvatar;
-        @Bind(R.id.user_name) TextView userName;
-        @Bind(R.id.user_type) TextView userType;
+        @BindView(R.id.user_avatar) ImageView userAvatar;
+        @BindView(R.id.user_name) TextView userName;
+        @BindView(R.id.user_type) TextView userType;
 
         public GitHubUserViewHolder(View itemView) {
             super(itemView);

@@ -25,19 +25,19 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class SignInActivity extends BaseActivity implements SignInView {
 
-    @Bind(R.id.email)
+    @BindView(R.id.email)
     AutoCompleteTextView mEmailView;
-    @Bind(R.id.password)
+    @BindView(R.id.password)
     EditText mPasswordView;
-    @Bind(R.id.login_progress)
+    @BindView(R.id.login_progress)
     View mProgressView;
-    @Bind(R.id.login_form)
+    @BindView(R.id.login_form)
     View mLoginFormView;
 
     @Inject
