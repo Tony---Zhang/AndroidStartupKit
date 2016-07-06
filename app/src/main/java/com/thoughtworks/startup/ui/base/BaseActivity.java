@@ -8,7 +8,7 @@ import com.thoughtworks.startup.injection.component.ActivityComponent;
 import com.thoughtworks.startup.injection.component.DaggerActivityComponent;
 import com.thoughtworks.startup.injection.module.ActivityModule;
 
-public class BaseActivity extends AppCompatActivity {
+abstract public class BaseActivity extends AppCompatActivity {
 
     private ActivityComponent mActivityComponent;
 
