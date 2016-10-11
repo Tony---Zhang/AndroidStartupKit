@@ -113,17 +113,6 @@ the Alpha, Beta or production channels like this
 ```
 Read [plugin documentation](https://github.com/Triple-T/gradle-play-publisher) for more info.
 
-### Crashlytics
-
-You can also use Fabric's Crashlytics for distributing beta releases. Remember to add your fabric
-account details to `app/src/fabric.properties`.
-
-To upload a release build to Crashlytics run:
-
-```
-./gradlew assembleRelease crashlyticsUploadDistributionRelease
-```
-
 ## New project setup 
 
 To quickly start a new project from this boilerplate follow the next steps:

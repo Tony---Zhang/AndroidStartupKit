@@ -3,12 +3,10 @@ package com.thoughtworks.startup;
 import android.app.Application;
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
 import com.thoughtworks.startup.injection.component.ApplicationComponent;
 import com.thoughtworks.startup.injection.component.DaggerApplicationComponent;
 import com.thoughtworks.startup.injection.module.ApplicationModule;
 
-import io.fabric.sdk.android.Fabric;
 import timber.log.Timber;
 
 public class StartupApplication extends Application  {
@@ -21,7 +19,6 @@ public class StartupApplication extends Application  {
 
         if (BuildConfig.DEBUG) {
             Timber.plant(new Timber.DebugTree());
-            Fabric.with(this, new Crashlytics());
         }
     }
 
