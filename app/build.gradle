@@ -2,17 +2,15 @@ apply plugin: 'com.android.application'
 apply from: '../config/quality/quality.gradle'
 apply plugin: 'com.github.triplet.play'
 apply plugin: 'com.neenbedankt.android-apt'
-//TODO uncomment line below after adding fabric api secret and key to fabric.properties
-//apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '23.0.3'
+    buildToolsVersion '24.0.3'
 
     defaultConfig {
         applicationId 'com.thoughtworks.startup'
         minSdkVersion 17
-        targetSdkVersion 23
+        targetSdkVersion 24
         testInstrumentationRunner "${applicationId}.runner.RxAndroidJUnitRunner"
         versionCode 1000
         // Major -> Millions, Minor -> Thousands, Bugfix -> Hundreds. E.g 1.3.72 == 1,003,072
@@ -48,9 +46,6 @@ android {
 
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            ext.betaDistributionReleaseNotesFilePath =
-                    file('../crashlytics_release_notes.txt').absolutePath
         }
 
         debug {
@@ -105,11 +100,11 @@ play {
 }
 
 dependencies {
-    final PLAY_SERVICES_VERSION = '9.4.0'
-    final SUPPORT_LIBRARY_VERSION = '24.1.1'
-    final RETROFIT_VERSION = '2.0.0-beta2'
-    final DAGGER_VERSION = '2.5'
-    final BUTTERKNIFE_VERSION = '8.1.0'
+    final PLAY_SERVICES_VERSION = '9.6.1'
+    final SUPPORT_LIBRARY_VERSION = '24.2.1'
+    final RETROFIT_VERSION = '2.1.0'
+    final DAGGER_VERSION = '2.7'
+    final BUTTERKNIFE_VERSION = '8.4.0'
     final DEXMAKER_VERSION = '1.4'
     final ASSERTJ_ANDROID = '1.1.1'
     final ESPRESSO_VERSION = '2.2.1'
@@ -129,19 +124,16 @@ dependencies {
 
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.squareup.sqlbrite:sqlbrite:0.5.0'
-    compile "com.squareup.retrofit:retrofit:$RETROFIT_VERSION"
-    compile "com.squareup.retrofit:converter-gson:$RETROFIT_VERSION"
-    compile "com.squareup.retrofit:adapter-rxjava:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    compile "com.squareup.retrofit2:adapter-rxjava:$RETROFIT_VERSION"
     compile 'com.squareup:otto:1.3.8'
 
     compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'io.reactivex:rxjava:1.2.1'
     compile "com.jakewharton:butterknife:$BUTTERKNIFE_VERSION"
     apt "com.jakewharton:butterknife-compiler:$BUTTERKNIFE_VERSION"
     compile 'com.jakewharton.timber:timber:4.1.0'
-    compile('com.crashlytics.sdk.android:crashlytics:2.5.2@aar') {
-        transitive = true;
-    }
 
     compile "com.google.dagger:dagger:$DAGGER_VERSION"
     provided 'org.glassfish:javax.annotation:10.0-b28' //Required by Dagger2
@@ -170,7 +162,7 @@ dependencies {
     testCompile("com.squareup.assertj:assertj-android:$ASSERTJ_ANDROID") {
         exclude group: 'com.android.support', module: 'support-annotations'
     }
-    testCompile 'org.robolectric:robolectric:3.0'
+    testCompile 'org.robolectric:robolectric:3.1.2'
 
     // APT dependencies
     apt daggerCompiler
