@@ -1,17 +1,19 @@
 package com.thoughtworks.startup.ui.main;
 
+import com.thoughtworks.startup.data.DataManager;
+import com.thoughtworks.startup.data.model.Ribot;
+import com.thoughtworks.startup.ui.base.BasePresenter;
+
 import java.util.List;
 
 import javax.inject.Inject;
 
 import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 import timber.log.Timber;
-import com.thoughtworks.startup.data.DataManager;
-import com.thoughtworks.startup.data.model.Ribot;
-import com.thoughtworks.startup.ui.base.BasePresenter;
+
+import static rx.android.schedulers.AndroidSchedulers.mainThread;
+import static rx.schedulers.Schedulers.io;
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
@@ -37,8 +39,8 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     public void loadRibots() {
         checkViewAttached();
         mSubscription = mDataManager.getRibots()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
+                .observeOn(mainThread())
+                .subscribeOn(io())
                 .subscribe(new Subscriber<List<Ribot>>() {
                     @Override
                     public void onCompleted() {
