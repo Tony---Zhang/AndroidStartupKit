@@ -16,6 +16,7 @@ public class SignInInteractor {
 
     public interface Callback {
         void onSignInSuccessful();
+
         void onSignInFailed(String error);
     }
 
@@ -25,25 +26,29 @@ public class SignInInteractor {
     }
 
     public void signIn(String email, String pwd, final Callback callback) {
-        mSignInService.signIn(email, pwd).subscribeOn(io()).observeOn(mainThread()).subscribe(new Subscriber<SignInResponse>() {
-            @Override
-            public void onCompleted() {
+        mSignInService
+                .signIn(email, pwd)
+                .subscribeOn(io())
+                .observeOn(mainThread())
+                .subscribe(new Subscriber<SignInResponse>() {
+                    @Override
+                    public void onCompleted() {
 
-            }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                callback.onSignInFailed(e.getMessage());
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onSignInFailed(e.getMessage());
+                    }
 
-            @Override
-            public void onNext(SignInResponse signInResponse) {
-                if (signInResponse.getCode() ==  SignInService.SUCCESS_CODE) {
-                    callback.onSignInSuccessful();
-                } else {
-                    callback.onSignInFailed(signInResponse.getMsg());
-                }
-            }
-        });
+                    @Override
+                    public void onNext(SignInResponse signInResponse) {
+                        if (signInResponse.getCode() == SignInService.SUCCESS_CODE) {
+                            callback.onSignInSuccessful();
+                        } else {
+                            callback.onSignInFailed(signInResponse.getMsg());
+                        }
+                    }
+                });
     }
 }

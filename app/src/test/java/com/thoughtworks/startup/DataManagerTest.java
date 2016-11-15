@@ -73,7 +73,7 @@ public class DataManagerTest {
     @Test
     public void syncRibotsDoesNotCallDatabaseWhenApiFails() {
         when(mMockRibotsService.getRibots())
-                .thenReturn(Observable.<List<Ribot>>error(new RuntimeException()));
+                .thenReturn(Observable.error(new RuntimeException()));
 
         mDataManager.syncRibots().subscribe(new TestSubscriber<Ribot>());
         // Verify right calls to helper methods

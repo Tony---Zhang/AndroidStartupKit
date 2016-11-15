@@ -29,21 +29,24 @@ public class GitHubInteractor {
     }
 
     public void load(String keyword, final Callback callback) {
-        mGitHubService.getGitHubUserList(keyword).subscribeOn(io()).observeOn(mainThread()).subscribe(new Observer<GitHubUserList>() {
-            @Override
-            public void onCompleted() {
+        mGitHubService.getGitHubUserList(keyword)
+                .subscribeOn(io())
+                .observeOn(mainThread())
+                .subscribe(new Observer<GitHubUserList>() {
+                    @Override
+                    public void onCompleted() {
 
-            }
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                callback.onLoadUserListFailed();
-            }
+                    @Override
+                    public void onError(Throwable e) {
+                        callback.onLoadUserListFailed();
+                    }
 
-            @Override
-            public void onNext(GitHubUserList gitHubUserList) {
-                callback.onLoadUserListComplete(gitHubUserList.getItems());
-            }
-        });
+                    @Override
+                    public void onNext(GitHubUserList gitHubUserList) {
+                        callback.onLoadUserListComplete(gitHubUserList.getItems());
+                    }
+                });
     }
 }

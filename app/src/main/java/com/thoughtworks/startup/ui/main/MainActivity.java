@@ -76,7 +76,7 @@ public class MainActivity extends BaseActivity implements MainMvpView {
 
     @Override
     public void showRibotsEmpty() {
-        mRibotsAdapter.setRibots(Collections.<Ribot>emptyList());
+        mRibotsAdapter.setRibots(Collections.emptyList());
         mRibotsAdapter.notifyDataSetChanged();
         Toast.makeText(this, R.string.error_msg_empty_ribots, Toast.LENGTH_LONG).show();
     }
