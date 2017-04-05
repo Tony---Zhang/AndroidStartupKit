@@ -6,7 +6,7 @@ apply plugin: 'me.tatarka.retrolambda'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion '25'
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
         applicationId 'com.thoughtworks.startup'
@@ -106,11 +106,11 @@ play {
 }
 
 dependencies {
-    final PLAY_SERVICES_VERSION = '9.8.0'
-    final SUPPORT_LIBRARY_VERSION = '25.0.0'
-    final RETROFIT_VERSION = '2.1.0'
-    final DAGGER_VERSION = '2.7'
-    final BUTTERKNIFE_VERSION = '8.4.0'
+    final PLAY_SERVICES_VERSION = '10.2.1'
+    final SUPPORT_LIBRARY_VERSION = '25.3.1'
+    final RETROFIT_VERSION = '2.2.0'
+    final DAGGER_VERSION = '2.10'
+    final BUTTERKNIFE_VERSION = '8.5.1'
     final DEXMAKER_VERSION = '1.4'
     final ASSERTJ_ANDROID = '1.1.1'
     final ESPRESSO_VERSION = '2.2.1'
