@@ -32,18 +32,18 @@ import butterknife.OnClick;
 public class SignInActivity extends BaseActivity implements SignInView {
 
     @BindView(R.id.email)
-    AutoCompleteTextView mEmailView;
+    AutoCompleteTextView emailView;
     @BindView(R.id.password)
-    EditText mPasswordView;
+    EditText passwordView;
     @BindView(R.id.login_progress)
-    View mProgressView;
+    View progressView;
     @BindView(R.id.login_form)
-    View mLoginFormView;
+    View loginFormView;
 
     @Inject
-    SignInPresenter mSignInPresenter;
+    SignInPresenter signInPresenter;
 
-    private final String[] mDefaultEmails = new String[]{"tw@tw.com", "test@tw.com"};
+    private final String[] defaultEmails = new String[]{"tw@tw.com", "test@tw.com"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class SignInActivity extends BaseActivity implements SignInView {
         setContentView(R.layout.activity_signin);
         getActivityComponent().inject(this);
         ButterKnife.bind(this);
-        mSignInPresenter.attachView(this);
+        signInPresenter.attachView(this);
 
         initViews();
     }
@@ -59,14 +59,14 @@ public class SignInActivity extends BaseActivity implements SignInView {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mSignInPresenter.detachView();
+        signInPresenter.detachView();
     }
 
     @OnClick(R.id.email_sign_in_button)
     void signIn() {
-        final String email = mEmailView.getText().toString();
-        final String password = mPasswordView.getText().toString();
-        mSignInPresenter.signIn(email, password);
+        final String email = emailView.getText().toString();
+        final String password = passwordView.getText().toString();
+        signInPresenter.signIn(email, password);
     }
 
     @Override
@@ -79,26 +79,26 @@ public class SignInActivity extends BaseActivity implements SignInView {
 
     @Override
     public void showSignInFailed() {
-        mPasswordView.setError(getString(R.string.error_msg_incorrect_password));
-        mPasswordView.requestFocus();
+        passwordView.setError(getString(R.string.error_msg_incorrect_password));
+        passwordView.requestFocus();
     }
 
     @Override
     public void showSignInEmailInvalid() {
-        mEmailView.setError(getString(R.string.error_msg_invalid_email));
-        mEmailView.requestFocus();
+        emailView.setError(getString(R.string.error_msg_invalid_email));
+        emailView.requestFocus();
     }
 
     @Override
     public void showEmailIsEmpty() {
-        mEmailView.setError(getString(R.string.error_msg_field_required));
-        mEmailView.requestFocus();
+        emailView.setError(getString(R.string.error_msg_field_required));
+        emailView.requestFocus();
     }
 
     @Override
     public void showPasswordIsEmpty() {
-        mPasswordView.setError(getString(R.string.error_msg_field_required));
-        mPasswordView.requestFocus();
+        passwordView.setError(getString(R.string.error_msg_field_required));
+        passwordView.requestFocus();
     }
 
     /**
@@ -116,31 +116,31 @@ public class SignInActivity extends BaseActivity implements SignInView {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
             int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
 
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(show ? 0 : 1)
+            loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            loginFormView.animate().setDuration(shortAnimTime).alpha(show ? 0 : 1)
                     .setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+                            loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
                         }
                     });
 
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(show ? 1 : 0)
+            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            progressView.animate().setDuration(shortAnimTime).alpha(show ? 1 : 0)
                     .setListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
+                            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
                         }
                     });
         } else {
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
+            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+            loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
 
     private void initViews() {
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == R.id.login || id == EditorInfo.IME_NULL) {
@@ -151,7 +151,7 @@ public class SignInActivity extends BaseActivity implements SignInView {
             }
         });
         List<String> emails = new ArrayList<>();
-        Collections.addAll(emails, mDefaultEmails);
+        Collections.addAll(emails, defaultEmails);
         addEmailsToAutoComplete(emails);
     }
 
@@ -159,6 +159,6 @@ public class SignInActivity extends BaseActivity implements SignInView {
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<>(SignInActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
-        mEmailView.setAdapter(adapter);
+        emailView.setAdapter(adapter);
     }
 }

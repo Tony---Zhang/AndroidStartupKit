@@ -17,36 +17,36 @@ import com.thoughtworks.startup.util.EventPosterHelper;
 @Singleton
 public class DataManager {
 
-    private final RibotsService mRibotsService;
-    private final DatabaseHelper mDatabaseHelper;
-    private final PreferencesHelper mPreferencesHelper;
-    private final EventPosterHelper mEventPoster;
+    private final RibotsService ribotsService;
+    private final DatabaseHelper databaseHelper;
+    private final PreferencesHelper preferencesHelper;
+    private final EventPosterHelper eventPosterHelper;
 
     @Inject
     public DataManager(RibotsService ribotsService, PreferencesHelper preferencesHelper,
                        DatabaseHelper databaseHelper, EventPosterHelper eventPosterHelper) {
-        mRibotsService = ribotsService;
-        mPreferencesHelper = preferencesHelper;
-        mDatabaseHelper = databaseHelper;
-        mEventPoster = eventPosterHelper;
+        this.ribotsService = ribotsService;
+        this.preferencesHelper = preferencesHelper;
+        this.databaseHelper = databaseHelper;
+        this.eventPosterHelper = eventPosterHelper;
     }
 
     public PreferencesHelper getPreferencesHelper() {
-        return mPreferencesHelper;
+        return preferencesHelper;
     }
 
     public Observable<Ribot> syncRibots() {
-        return mRibotsService.getRibots()
+        return ribotsService.getRibots()
                 .concatMap(new Func1<List<Ribot>, Observable<Ribot>>() {
                     @Override
                     public Observable<Ribot> call(List<Ribot> ribots) {
-                        return mDatabaseHelper.setRibots(ribots);
+                        return databaseHelper.setRibots(ribots);
                     }
                 });
     }
 
     public Observable<List<Ribot>> getRibots() {
-        return mDatabaseHelper.getRibots().distinct();
+        return databaseHelper.getRibots().distinct();
     }
 
 
@@ -55,7 +55,7 @@ public class DataManager {
         return new Action0() {
             @Override
             public void call() {
-                mEventPoster.postEventSafely(event);
+                eventPosterHelper.postEventSafely(event);
             }
         };
     }

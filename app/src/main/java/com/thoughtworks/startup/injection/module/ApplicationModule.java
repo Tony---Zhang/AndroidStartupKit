@@ -20,21 +20,21 @@ import com.thoughtworks.startup.injection.ApplicationContext;
  */
 @Module
 public class ApplicationModule {
-    protected final Application mApplication;
+    protected final Application application;
 
     public ApplicationModule(Application application) {
-        mApplication = application;
+        this.application = application;
     }
 
     @Provides
     Application provideApplication() {
-        return mApplication;
+        return application;
     }
 
     @Provides
     @ApplicationContext
     Context provideContext() {
-        return mApplication;
+        return application;
     }
 
     @Provides

@@ -22,20 +22,20 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class GitHubPresenterTest {
 
-    @Mock GitHubView mMockGitHubView;
-    @Mock GitHubInteractor mMockGitHubInteractor;
+    @Mock GitHubView mockGitHubView;
+    @Mock GitHubInteractor mockGitHubInteractor;
 
-    GitHubPresenter mGitHubPresenter;
+    GitHubPresenter gitHubPresenter;
 
     @Before
     public void setUp() throws Exception {
-        mGitHubPresenter = new GitHubPresenter(mMockGitHubInteractor);
-        mGitHubPresenter.attachView(mMockGitHubView);
+        gitHubPresenter = new GitHubPresenter(mockGitHubInteractor);
+        gitHubPresenter.attachView(mockGitHubView);
     }
 
     @After
     public void tearDown() throws Exception {
-        mGitHubPresenter.detachView();
+        gitHubPresenter.detachView();
     }
 
     @Test
@@ -47,12 +47,12 @@ public class GitHubPresenterTest {
                 callback.onLoadUserListComplete(anyListOf(GitHubUser.class));
                 return null;
             }
-        }).when(mMockGitHubInteractor).load(anyString(), any(GitHubInteractor.Callback.class));
+        }).when(mockGitHubInteractor).load(anyString(), any(GitHubInteractor.Callback.class));
 
-        mGitHubPresenter.loadUserList("keyword");
+        gitHubPresenter.loadUserList("keyword");
 
-        verify(mMockGitHubView).showList(anyListOf(GitHubUser.class));
-        verify(mMockGitHubView, never()).showError();
+        verify(mockGitHubView).showList(anyListOf(GitHubUser.class));
+        verify(mockGitHubView, never()).showError();
     }
 
     @Test
@@ -64,11 +64,11 @@ public class GitHubPresenterTest {
                 callback.onLoadUserListFailed();
                 return null;
             }
-        }).when(mMockGitHubInteractor).load(anyString(), any(GitHubInteractor.Callback.class));
+        }).when(mockGitHubInteractor).load(anyString(), any(GitHubInteractor.Callback.class));
 
-        mGitHubPresenter.loadUserList("keyword");
+        gitHubPresenter.loadUserList("keyword");
 
-        verify(mMockGitHubView).showError();
-        verify(mMockGitHubView, never()).showList(anyListOf(GitHubUser.class));
+        verify(mockGitHubView).showError();
+        verify(mockGitHubView, never()).showList(anyListOf(GitHubUser.class));
     }
 }

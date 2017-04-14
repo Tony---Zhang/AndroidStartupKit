@@ -13,15 +13,15 @@ public class PreferencesHelper {
 
     public static final String PREF_FILE_NAME = "android_startup_pref_file";
 
-    private final SharedPreferences mPref;
+    private final SharedPreferences pref;
 
     @Inject
     public PreferencesHelper(@ApplicationContext Context context) {
-        mPref = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
+        pref = context.getSharedPreferences(PREF_FILE_NAME, Context.MODE_PRIVATE);
     }
 
     public void clear() {
-        mPref.edit().clear().apply();
+        pref.edit().clear().apply();
     }
 
 }

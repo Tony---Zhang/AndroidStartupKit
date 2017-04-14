@@ -21,8 +21,8 @@ import timber.log.Timber;
 
 public class SyncService extends Service {
 
-    @Inject DataManager mDataManager;
-    private Subscription mSubscription;
+    @Inject DataManager dataManager;
+    private Subscription subscription;
 
     public static Intent getStartIntent(Context context) {
         return new Intent(context, SyncService.class);
@@ -49,8 +49,8 @@ public class SyncService extends Service {
             return START_NOT_STICKY;
         }
 
-        if (mSubscription != null && !mSubscription.isUnsubscribed()) mSubscription.unsubscribe();
-        mSubscription = mDataManager.syncRibots()
+        if (subscription != null && !subscription.isUnsubscribed()) subscription.unsubscribe();
+        subscription = dataManager.syncRibots()
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Observer<Ribot>() {
                     @Override
@@ -76,7 +76,7 @@ public class SyncService extends Service {
 
     @Override
     public void onDestroy() {
-        if (mSubscription != null) mSubscription.unsubscribe();
+        if (subscription != null) subscription.unsubscribe();
         super.onDestroy();
     }
 

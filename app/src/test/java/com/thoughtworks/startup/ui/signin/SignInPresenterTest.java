@@ -21,21 +21,21 @@ import static org.mockito.internal.verification.VerificationModeFactory.times;
 public class SignInPresenterTest {
 
     @Mock
-    SignInView mSignInView;
+    SignInView signInView;
     @Mock
-    SignInInteractor mSignInInteractor;
+    SignInInteractor signInInteractor;
 
-    SignInPresenter mSignInPresenter;
+    SignInPresenter signInPresenter;
 
     @Before
     public void setUp() throws Exception {
-        mSignInPresenter = new SignInPresenter(mSignInInteractor);
-        mSignInPresenter.attachView(mSignInView);
+        signInPresenter = new SignInPresenter(signInInteractor);
+        signInPresenter.attachView(signInView);
     }
 
     @After
     public void tearDown() throws Exception {
-        mSignInPresenter.detachView();
+        signInPresenter.detachView();
     }
 
     @Test
@@ -43,12 +43,12 @@ public class SignInPresenterTest {
         String email = "tw@gmail.com";
         String pwd = "password";
 
-        mSignInPresenter.signIn(email, pwd);
+        signInPresenter.signIn(email, pwd);
 
-        verify(mSignInView).showSignInEmailInvalid();
-        verify(mSignInView, never()).showProgress(anyBoolean());
-        verify(mSignInView, never()).showSignInSuccess();
-        verify(mSignInView, never()).showSignInFailed();
+        verify(signInView).showSignInEmailInvalid();
+        verify(signInView, never()).showProgress(anyBoolean());
+        verify(signInView, never()).showSignInSuccess();
+        verify(signInView, never()).showSignInFailed();
     }
 
     @Test
@@ -62,14 +62,14 @@ public class SignInPresenterTest {
                 callback.onSignInSuccessful();
                 return null;
             }
-        }).when(mSignInInteractor).signIn(anyString(), anyString(), any(SignInInteractor.Callback.class));
+        }).when(signInInteractor).signIn(anyString(), anyString(), any(SignInInteractor.Callback.class));
 
 
-        mSignInPresenter.signIn(email, pwd);
+        signInPresenter.signIn(email, pwd);
 
-        verify(mSignInView, times(2)).showProgress(anyBoolean());
-        verify(mSignInView).showSignInSuccess();
-        verify(mSignInView, never()).showSignInFailed();
+        verify(signInView, times(2)).showProgress(anyBoolean());
+        verify(signInView).showSignInSuccess();
+        verify(signInView, never()).showSignInFailed();
     }
 
     @Test
@@ -83,37 +83,37 @@ public class SignInPresenterTest {
                 callback.onSignInFailed("error");
                 return null;
             }
-        }).when(mSignInInteractor).signIn(anyString(), anyString(), any(SignInInteractor.Callback.class));
+        }).when(signInInteractor).signIn(anyString(), anyString(), any(SignInInteractor.Callback.class));
 
 
-        mSignInPresenter.signIn(email, pwd);
+        signInPresenter.signIn(email, pwd);
 
-        verify(mSignInView, times(2)).showProgress(anyBoolean());
-        verify(mSignInView).showSignInFailed();
-        verify(mSignInView, never()).showSignInSuccess();
+        verify(signInView, times(2)).showProgress(anyBoolean());
+        verify(signInView).showSignInFailed();
+        verify(signInView, never()).showSignInSuccess();
     }
 
     @Test
     public void signInWithoutEmailShowEmailIsEmpty() throws Exception {
         String pwd = "password";
 
-        mSignInPresenter.signIn(null, pwd);
+        signInPresenter.signIn(null, pwd);
 
-        verify(mSignInView).showEmailIsEmpty();
-        verify(mSignInView, never()).showProgress(anyBoolean());
-        verify(mSignInView, never()).showSignInSuccess();
-        verify(mSignInView, never()).showSignInFailed();
+        verify(signInView).showEmailIsEmpty();
+        verify(signInView, never()).showProgress(anyBoolean());
+        verify(signInView, never()).showSignInSuccess();
+        verify(signInView, never()).showSignInFailed();
     }
 
     @Test
     public void signInWithoutPasswordShowPasswordIsEmpty() throws Exception {
         String email = "tw@gmail.com";
 
-        mSignInPresenter.signIn(email, null);
+        signInPresenter.signIn(email, null);
 
-        verify(mSignInView).showPasswordIsEmpty();
-        verify(mSignInView, never()).showProgress(anyBoolean());
-        verify(mSignInView, never()).showSignInSuccess();
-        verify(mSignInView, never()).showSignInFailed();
+        verify(signInView).showPasswordIsEmpty();
+        verify(signInView, never()).showProgress(anyBoolean());
+        verify(signInView, never()).showSignInSuccess();
+        verify(signInView, never()).showSignInFailed();
     }
 }

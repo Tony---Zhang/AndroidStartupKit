@@ -15,7 +15,7 @@ import static rx.schedulers.Schedulers.io;
 
 public class GitHubInteractor {
 
-    private GitHubService mGitHubService;
+    private GitHubService gitHubService;
 
     public interface Callback {
         void onLoadUserListComplete(List<GitHubUser> userList);
@@ -25,11 +25,11 @@ public class GitHubInteractor {
 
     @Inject
     public GitHubInteractor(GitHubService gitHubService) {
-        this.mGitHubService = gitHubService;
+        this.gitHubService = gitHubService;
     }
 
     public void load(String keyword, final Callback callback) {
-        mGitHubService.getGitHubUserList(keyword)
+        gitHubService.getGitHubUserList(keyword)
                 .subscribeOn(io())
                 .observeOn(mainThread())
                 .subscribe(new Observer<GitHubUserList>() {

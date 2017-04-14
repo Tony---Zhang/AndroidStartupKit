@@ -20,15 +20,15 @@ import butterknife.ButterKnife;
 
 public class RibotsAdapter extends RecyclerView.Adapter<RibotsAdapter.RibotViewHolder> {
 
-    private List<Ribot> mRibots;
+    private List<Ribot> ribots;
 
     @Inject
     public RibotsAdapter() {
-        mRibots = new ArrayList<>();
+        ribots = new ArrayList<>();
     }
 
     public void setRibots(List<Ribot> ribots) {
-        mRibots = ribots;
+        this.ribots = ribots;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class RibotsAdapter extends RecyclerView.Adapter<RibotsAdapter.RibotViewH
 
     @Override
     public void onBindViewHolder(RibotViewHolder holder, int position) {
-        Ribot ribot = mRibots.get(position);
+        Ribot ribot = ribots.get(position);
         holder.hexColorView.setBackgroundColor(Color.parseColor(ribot.profile.hexColor));
         holder.nameTextView.setText(String.format("%s %s",
                 ribot.profile.name.first, ribot.profile.name.last));
@@ -49,7 +49,7 @@ public class RibotsAdapter extends RecyclerView.Adapter<RibotsAdapter.RibotViewH
 
     @Override
     public int getItemCount() {
-        return mRibots.size();
+        return ribots.size();
     }
 
     class RibotViewHolder extends RecyclerView.ViewHolder {

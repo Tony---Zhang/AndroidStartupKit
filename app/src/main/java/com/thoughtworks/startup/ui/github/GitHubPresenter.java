@@ -9,15 +9,15 @@ import javax.inject.Inject;
 
 public class GitHubPresenter extends BasePresenter<GitHubView> implements GitHubInteractor.Callback {
 
-    private GitHubInteractor mGitHubInteractor;
+    private GitHubInteractor gitHubInteractor;
 
     @Inject
     public GitHubPresenter(GitHubInteractor gitHubInteractor) {
-        this.mGitHubInteractor = gitHubInteractor;
+        this.gitHubInteractor = gitHubInteractor;
     }
 
     public void loadUserList(String keyword) {
-        mGitHubInteractor.load(keyword, this);
+        gitHubInteractor.load(keyword, this);
     }
 
     @Override

@@ -11,7 +11,7 @@ import timber.log.Timber;
 
 public class StartupApplication extends Application  {
 
-    ApplicationComponent mApplicationComponent;
+    ApplicationComponent applicationComponent;
 
     @Override
     public void onCreate() {
@@ -27,16 +27,16 @@ public class StartupApplication extends Application  {
     }
 
     public ApplicationComponent getComponent() {
-        if (mApplicationComponent == null) {
-            mApplicationComponent = DaggerApplicationComponent.builder()
+        if (applicationComponent == null) {
+            applicationComponent = DaggerApplicationComponent.builder()
                     .applicationModule(new ApplicationModule(this))
                     .build();
         }
-        return mApplicationComponent;
+        return applicationComponent;
     }
 
     // Needed to replace the component with a test specific one
     public void setComponent(ApplicationComponent applicationComponent) {
-        mApplicationComponent = applicationComponent;
+        this.applicationComponent = applicationComponent;
     }
 }

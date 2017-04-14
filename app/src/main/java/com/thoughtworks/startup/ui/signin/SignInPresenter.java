@@ -10,11 +10,11 @@ import static com.thoughtworks.startup.util.RegexUtil.isThoughtWorkEmail;
 
 public class SignInPresenter extends BasePresenter<SignInView> implements SignInInteractor.Callback {
 
-    private SignInInteractor mSignInInteractor;
+    private SignInInteractor signInInteractor;
 
     @Inject
     public SignInPresenter(SignInInteractor signInInteractor) {
-        this.mSignInInteractor = signInInteractor;
+        this.signInInteractor = signInInteractor;
     }
 
     public void signIn(String email, String password) {
@@ -31,7 +31,7 @@ public class SignInPresenter extends BasePresenter<SignInView> implements SignIn
             return;
         }
         getMvpView().showProgress(true);
-        mSignInInteractor.signIn(email, password, this);
+        signInInteractor.signIn(email, password, this);
     }
 
     @Override

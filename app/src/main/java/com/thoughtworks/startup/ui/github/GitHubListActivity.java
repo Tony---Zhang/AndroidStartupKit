@@ -25,12 +25,12 @@ import butterknife.ButterKnife;
 public class GitHubListActivity extends BaseActivity implements GitHubView {
 
     @BindView(R.id.github_recycle_view)
-    RecyclerView mGitHubRecycleView;
+    RecyclerView gitHubRecycleView;
 
     @Inject
-    GitHubPresenter mGitHubPresenter;
+    GitHubPresenter gitHubPresenter;
 
-    private GitHubAdapter mGitHubAdapter;
+    private GitHubAdapter gitHubAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +39,14 @@ public class GitHubListActivity extends BaseActivity implements GitHubView {
         setContentView(R.layout.activity_git_hub_list);
         ButterKnife.bind(this);
 
-        mGitHubPresenter.attachView(this);
+        gitHubPresenter.attachView(this);
         initViews();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mGitHubPresenter.detachView();
+        gitHubPresenter.detachView();
     }
 
     @Override
@@ -58,8 +58,8 @@ public class GitHubListActivity extends BaseActivity implements GitHubView {
 
     @Override
     public void showList(List<GitHubUser> userList) {
-        mGitHubAdapter.setUserList(userList);
-        mGitHubAdapter.notifyDataSetChanged();
+        gitHubAdapter.setUserList(userList);
+        gitHubAdapter.notifyDataSetChanged();
         if (userList.isEmpty()) {
             Toast.makeText(this, R.string.error_msg_empty_github_user, Toast.LENGTH_LONG).show();
         }
@@ -73,7 +73,7 @@ public class GitHubListActivity extends BaseActivity implements GitHubView {
 
     public void onQuerySubmit(String query) {
         Toast.makeText(GitHubListActivity.this, "query: " + query, Toast.LENGTH_SHORT).show();
-        mGitHubPresenter.loadUserList(query);
+        gitHubPresenter.loadUserList(query);
     }
 
     private void initSearchMenu(Menu menu) {
@@ -103,8 +103,8 @@ public class GitHubListActivity extends BaseActivity implements GitHubView {
     }
 
     private void initViews() {
-        mGitHubAdapter = new GitHubAdapter(this);
-        mGitHubRecycleView.setLayoutManager(new LinearLayoutManager(this));
-        mGitHubRecycleView.setAdapter(mGitHubAdapter);
+        gitHubAdapter = new GitHubAdapter(this);
+        gitHubRecycleView.setLayoutManager(new LinearLayoutManager(this));
+        gitHubRecycleView.setAdapter(gitHubAdapter);
     }
 }

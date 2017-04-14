@@ -20,16 +20,16 @@ import butterknife.ButterKnife;
 
 public class GitHubAdapter extends RecyclerView.Adapter<GitHubAdapter.GitHubUserViewHolder> {
 
-    private List<GitHubUser> mUserList;
-    private Context mContext;
+    private List<GitHubUser> userList;
+    private Context context;
 
     public GitHubAdapter(Context context) {
-        mContext = context;
-        mUserList = new ArrayList<>();
+        this.context = context;
+        userList = new ArrayList<>();
     }
 
     public void setUserList(List<GitHubUser> userList) {
-        mUserList = userList;
+        this.userList = userList;
     }
 
     @Override
@@ -41,24 +41,27 @@ public class GitHubAdapter extends RecyclerView.Adapter<GitHubAdapter.GitHubUser
 
     @Override
     public void onBindViewHolder(GitHubUserViewHolder holder, int position) {
-        GitHubUser user = mUserList.get(position);
-        Picasso.with(mContext).load(user.getAvatarUrl()).into(holder.userAvatar);
+        GitHubUser user = userList.get(position);
+        Picasso.with(context).load(user.getAvatarUrl()).into(holder.userAvatar);
         holder.userName.setText(user.getLogin());
         holder.userType.setText(user.getType());
     }
 
     @Override
     public int getItemCount() {
-        return mUserList.size();
+        return userList.size();
     }
 
     class GitHubUserViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.user_avatar) ImageView userAvatar;
-        @BindView(R.id.user_name) TextView userName;
-        @BindView(R.id.user_type) TextView userType;
+        @BindView(R.id.user_avatar)
+        ImageView userAvatar;
+        @BindView(R.id.user_name)
+        TextView userName;
+        @BindView(R.id.user_type)
+        TextView userType;
 
-        public GitHubUserViewHolder(View itemView) {
+        GitHubUserViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }

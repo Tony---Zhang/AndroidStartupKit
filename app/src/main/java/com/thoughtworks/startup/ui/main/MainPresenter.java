@@ -17,12 +17,12 @@ import static rx.schedulers.Schedulers.io;
 
 public class MainPresenter extends BasePresenter<MainMvpView> {
 
-    private final DataManager mDataManager;
-    private Subscription mSubscription;
+    private final DataManager dataManager;
+    private Subscription subscription;
 
     @Inject
     public MainPresenter(DataManager dataManager) {
-        mDataManager = dataManager;
+        this.dataManager = dataManager;
     }
 
     @Override
@@ -33,12 +33,12 @@ public class MainPresenter extends BasePresenter<MainMvpView> {
     @Override
     public void detachView() {
         super.detachView();
-        if (mSubscription != null) mSubscription.unsubscribe();
+        if (subscription != null) subscription.unsubscribe();
     }
 
     public void loadRibots() {
         checkViewAttached();
-        mSubscription = mDataManager.getRibots()
+        subscription = dataManager.getRibots()
                 .observeOn(mainThread())
                 .subscribeOn(io())
                 .subscribe(new Subscriber<List<Ribot>>() {

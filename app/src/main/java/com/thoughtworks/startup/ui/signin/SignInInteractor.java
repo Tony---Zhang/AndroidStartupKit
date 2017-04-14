@@ -12,7 +12,7 @@ import static rx.schedulers.Schedulers.io;
 
 public class SignInInteractor {
 
-    private SignInService mSignInService;
+    private SignInService signInService;
 
     public interface Callback {
         void onSignInSuccessful();
@@ -22,11 +22,11 @@ public class SignInInteractor {
 
     @Inject
     public SignInInteractor(SignInService signInService) {
-        this.mSignInService = signInService;
+        this.signInService = signInService;
     }
 
     public void signIn(String email, String pwd, final Callback callback) {
-        mSignInService
+        signInService
                 .signIn(email, pwd)
                 .subscribeOn(io())
                 .observeOn(mainThread())

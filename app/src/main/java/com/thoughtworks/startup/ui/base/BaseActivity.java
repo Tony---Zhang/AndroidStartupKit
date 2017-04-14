@@ -10,7 +10,7 @@ import com.thoughtworks.startup.injection.module.ActivityModule;
 
 abstract public class BaseActivity extends AppCompatActivity {
 
-    private ActivityComponent mActivityComponent;
+    private ActivityComponent activityComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +18,13 @@ abstract public class BaseActivity extends AppCompatActivity {
     }
 
     public ActivityComponent getActivityComponent() {
-        if (mActivityComponent == null) {
-            mActivityComponent = DaggerActivityComponent.builder()
+        if (activityComponent == null) {
+            activityComponent = DaggerActivityComponent.builder()
                     .activityModule(new ActivityModule(this))
                     .applicationComponent(StartupApplication.get(this).getComponent())
                     .build();
         }
-        return mActivityComponent;
+        return activityComponent;
     }
 
 }

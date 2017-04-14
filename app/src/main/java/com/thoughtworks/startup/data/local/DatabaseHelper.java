@@ -14,21 +14,21 @@ import javax.inject.Singleton;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.functions.Func1;
+
 import com.thoughtworks.startup.data.model.Ribot;
 
 @Singleton
 public class DatabaseHelper {
 
-    private final BriteDatabase mDb;
+    private final BriteDatabase database;
 
     @Inject
     public DatabaseHelper(DbOpenHelper dbOpenHelper) {
-        mDb = SqlBrite.create().wrapDatabaseHelper(dbOpenHelper);
+        database = SqlBrite.create().wrapDatabaseHelper(dbOpenHelper);
     }
 
     public BriteDatabase getBriteDb() {
-        return mDb;
+        return database;
     }
 
     /**
@@ -39,11 +39,11 @@ public class DatabaseHelper {
             @Override
             public void call(Subscriber<? super Void> subscriber) {
                 if (subscriber.isUnsubscribed()) return;
-                BriteDatabase.Transaction transaction = mDb.newTransaction();
+                BriteDatabase.Transaction transaction = database.newTransaction();
                 try {
-                    Cursor cursor = mDb.query("SELECT name FROM sqlite_master WHERE type='table'");
+                    Cursor cursor = database.query("SELECT name FROM sqlite_master WHERE type='table'");
                     while (cursor.moveToNext()) {
-                        mDb.delete(cursor.getString(cursor.getColumnIndex("name")), null);
+                        database.delete(cursor.getString(cursor.getColumnIndex("name")), null);
                     }
                     cursor.close();
                     transaction.markSuccessful();
@@ -60,11 +60,11 @@ public class DatabaseHelper {
             @Override
             public void call(Subscriber<? super Ribot> subscriber) {
                 if (subscriber.isUnsubscribed()) return;
-                BriteDatabase.Transaction transaction = mDb.newTransaction();
+                BriteDatabase.Transaction transaction = database.newTransaction();
                 try {
-                    mDb.delete(Db.RibotProfileTable.TABLE_NAME, null);
+                    database.delete(Db.RibotProfileTable.TABLE_NAME, null);
                     for (Ribot ribot : newRibots) {
-                        long result = mDb.insert(Db.RibotProfileTable.TABLE_NAME,
+                        long result = database.insert(Db.RibotProfileTable.TABLE_NAME,
                                 Db.RibotProfileTable.toContentValues(ribot.profile),
                                 SQLiteDatabase.CONFLICT_REPLACE);
                         if (result >= 0) subscriber.onNext(ribot);
@@ -79,7 +79,7 @@ public class DatabaseHelper {
     }
 
     public Observable<List<Ribot>> getRibots() {
-        return mDb.createQuery(Db.RibotProfileTable.TABLE_NAME,
+        return database.createQuery(Db.RibotProfileTable.TABLE_NAME,
                 "SELECT * FROM " + Db.RibotProfileTable.TABLE_NAME)
                 .mapToList(cursor -> new Ribot(Db.RibotProfileTable.parseCursor(cursor)));
     }

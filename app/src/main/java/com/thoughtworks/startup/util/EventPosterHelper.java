@@ -12,15 +12,15 @@ import javax.inject.Inject;
  */
 public class EventPosterHelper {
 
-    private final Bus mBus;
+    private final Bus bus;
 
     @Inject
     public EventPosterHelper(Bus bus) {
-        mBus = bus;
+        this.bus = bus;
     }
 
     public Bus getBus() {
-        return mBus;
+        return bus;
     }
 
     /**
@@ -30,7 +30,7 @@ public class EventPosterHelper {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
-                mBus.post(event);
+                bus.post(event);
             }
         });
     }
