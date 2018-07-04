@@ -103,7 +103,7 @@ public class GitHubListActivity extends BaseActivity implements GitHubView {
     }
 
     private void initViews() {
-        gitHubAdapter = new GitHubAdapter(this);
+        gitHubAdapter = new GitHubAdapter();
         gitHubRecycleView.setLayoutManager(new LinearLayoutManager(this));
         gitHubRecycleView.setAdapter(gitHubAdapter);
     }
