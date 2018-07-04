@@ -15,13 +15,11 @@ apply plugin: 'findbugs'
 apply plugin: 'pmd'
 
 dependencies {
-    checkstyle 'com.puppycrawl.tools:checkstyle:6.5'
+    checkstyle 'com.puppycrawl.tools:checkstyle:7.1'
 }
 
-def qualityConfigDir = "$project.rootDir/config/quality";
+def qualityConfigDir = "$project.rootDir/config/quality"
 def reportsDir = "$project.buildDir/reports"
-
-check.dependsOn 'checkstyle', 'pmd' ,'findbugs'
 
 task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code style checks') {
     configFile file("$qualityConfigDir/checkstyle/checkstyle-config.xml")
@@ -31,7 +29,7 @@ task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code
     reports {
         xml.enabled = true
         xml {
-            destination "$reportsDir/checkstyle/checkstyle.xml"
+            destination file("$reportsDir/checkstyle/checkstyle.xml")
         }
     }
 
@@ -41,7 +39,7 @@ task checkstyle(type: Checkstyle, group: 'Verification', description: 'Runs code
 task findbugs(type: FindBugs,
         group: 'Verification',
         description: 'Inspect java bytecode for bugs',
-        dependsOn: ['compileProductionDebugSources','compileProductionReleaseSources']) {
+        dependsOn: ['compileProductionReleaseSources']) {
 
     ignoreFailures = false
     effort = "max"
@@ -57,10 +55,10 @@ task findbugs(type: FindBugs,
         xml.enabled = true
         html.enabled = false
         xml {
-            destination "$reportsDir/findbugs/findbugs.xml"
+            destination file("$reportsDir/findbugs/findbugs.xml")
         }
         html {
-            destination "$reportsDir/findbugs/findbugs.html"
+            destination file("$reportsDir/findbugs/findbugs.html")
         }
     }
 
@@ -80,10 +78,12 @@ task pmd(type: Pmd, group: 'Verification', description: 'Inspect sourcecode for 
         xml.enabled = true
         html.enabled = true
         xml {
-            destination "$reportsDir/pmd/pmd.xml"
+            destination file("$reportsDir/pmd/pmd.xml")
         }
         html {
-            destination "$reportsDir/pmd/pmd.html"
+            destination file("$reportsDir/pmd/pmd.html")
         }
     }
 }
+
+check.dependsOn 'checkstyle', 'pmd' ,'findbugs'
