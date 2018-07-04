@@ -97,6 +97,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    dexOptions {
+        preDexLibraries true
+        maxProcessCount 8
+    }
+
     sourceSets {
         def commonTestDir = 'src/commonTest/java'
         test {
