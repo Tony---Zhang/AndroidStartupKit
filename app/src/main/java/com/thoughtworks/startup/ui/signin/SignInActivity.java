@@ -1,18 +1,12 @@
 package com.thoughtworks.startup.ui.signin;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.thoughtworks.startup.R;
@@ -101,54 +95,19 @@ public class SignInActivity extends BaseActivity implements SignInView {
         passwordView.requestFocus();
     }
 
-    /**
-     * On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-     * for very easy animations. If available, use these APIs to fade-in
-     * the progress spinner.
-     *
-     * The ViewPropertyAnimator APIs are not available below Honeycomb MR2,
-     * so simply show and hide the relevant UI components.
-     * @param show
-     */
     @Override
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     public void showProgress(final boolean show) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            loginFormView.animate().setDuration(shortAnimTime).alpha(show ? 0 : 1)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                        }
-                    });
-
-            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            progressView.animate().setDuration(shortAnimTime).alpha(show ? 1 : 0)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                        }
-                    });
-        } else {
-            progressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
+        progressView.setVisibility(show ? View.VISIBLE : View.GONE);
+        loginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
     }
 
     private void initViews() {
-        passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == 100 || id == EditorInfo.IME_NULL) {
-                    signIn();
-                    return true;
-                }
-                return false;
+        passwordView.setOnEditorActionListener((textView, id, keyEvent) -> {
+            if (id == 100 || id == EditorInfo.IME_NULL) {
+                signIn();
+                return true;
             }
+            return false;
         });
         List<String> emails = new ArrayList<>();
         Collections.addAll(emails, defaultEmails);
