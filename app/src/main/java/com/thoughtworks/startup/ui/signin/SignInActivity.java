@@ -143,7 +143,7 @@ public class SignInActivity extends BaseActivity implements SignInView {
         passwordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                if (id == 100 || id == EditorInfo.IME_NULL) {
                     signIn();
                     return true;
                 }
